@@ -2,18 +2,14 @@ import gleam/int
 import gleam/list
 
 pub fn square_of_sum(n: Int) -> Int {
-  let sum =
-    list.range(1, n)
-    |> int.sum
-  // Sum all 
-  sum * sum
-  // x*x
+  let rng = list.range(1, n)
+  let total = int.sum(rng)
+  total * total
 }
 
 pub fn sum_of_squares(n: Int) -> Int {
   list.range(1, n)
   |> list.map(fn(x) { x * x })
-  // for each number in range x*x
   |> int.sum
 }
 
