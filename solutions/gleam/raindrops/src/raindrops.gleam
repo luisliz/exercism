@@ -10,16 +10,14 @@ pub fn number_to_string(number: Int) {
 }
 
 pub fn convert(number: Int) -> String {
-  let res = ""
-  let three = number % 3
-  let five = number % 5
-  let seven = number % 7
-
-  let res = case number {
-    three -> "Piing"
-    five -> "Plang"
-    seven -> "Plong"
-    _ -> int.to_string(number)
+  case number % 3, number % 5, number % 7 {
+    0, 0, 0 -> "PlingPlangPlong"
+    0, _, 0 -> "PlingPlong"
+    0, 0, _ -> "PlingPlang"
+    _, 0, 0 -> "PlangPlong"
+    0, _, _ -> "Pling"
+    _, 0, _ -> "Plang"
+    _, _, 0 -> "Plong"
+    _, _, _ -> int.to_string(number)
   }
-  res
 }
