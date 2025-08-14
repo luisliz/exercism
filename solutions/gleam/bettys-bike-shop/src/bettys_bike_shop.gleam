@@ -3,7 +3,7 @@ import gleam/int
 import gleam/string
 
 pub fn pence_to_pounds(pence) {
-  pence / 100
+  float.divide(pence, 100.0)
 }
 
 pub fn pounds_to_string(pounds) {
