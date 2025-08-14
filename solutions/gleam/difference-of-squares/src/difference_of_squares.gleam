@@ -1,12 +1,20 @@
 import gleam/int
+import gleam/list
 
 pub fn square_of_sum(n: Int) -> Int {
-  let int_list = [1, 2, 3, 4, 5, n]
-  int.sum(int_list) * int.sum(int_list)
+  let sum =
+    list.range(1, n)
+    |> int.sum
+  // Sum all 
+  sum * sum
+  // x*x
 }
 
 pub fn sum_of_squares(n: Int) -> Int {
-  n * n + sum_of_squares(n - 1)
+  list.range(1, n)
+  |> list.map(fn(x) { x * x })
+  // for each number in range x*x
+  |> int.sum
 }
 
 pub fn difference(n: Int) -> Int {
