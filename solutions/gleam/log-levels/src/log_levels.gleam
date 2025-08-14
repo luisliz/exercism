@@ -1,7 +1,8 @@
 import gleam/string
 
 pub fn message(log_line: String) -> String {
-  case log_line {
+  let newlog = string.trim(log_line)
+  case newlog {
     "[ERROR]:" <> message -> message
     "[WARNING]:" <> message -> message
     "[INFO]:" <> message -> message
@@ -11,17 +12,19 @@ pub fn message(log_line: String) -> String {
 }
 
 pub fn log_level(log_line: String) -> String {
-  case log_line {
-    "[ERROR]:" -> "error"
-    "[WARNING]:" -> "warning"
-    "[INFO]:" -> "info"
+  let newlog = string.trim(log_line)
+  case newlog {
+    "[ERROR]:" <> _ -> "error"
+    "[WARNING]:" <> _ -> "warning"
+    "[INFO]:" <> _ -> "info"
     _ -> "invalid log"
   }
   |> string.trim
 }
 
 pub fn reformat(log_line: String) -> String {
-  case log_line {
+  let newlog = string.trim(log_line)
+  case newlog {
     "[ERROR]:" <> rest -> rest |> string.trim <> " (error)"
     "[WARNING]:" <> rest -> rest |> string.trim <> " (warning)"
     "[INFO]:" <> rest -> rest |> string.trim <> " (info)"
